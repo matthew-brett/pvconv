@@ -15,7 +15,7 @@
 # based on pv2mnc and ana2mnc (see http://www.cmr.uq.edu.au/~rotor/software/)
 # by Andrew Janke - rotor@cmr.uq.edu.au, with thanks
 #
-# $Id: pvconv.pl,v 1.2 2004/04/27 02:58:35 matthewbrett Exp $
+# $Id: pvconv.pl,v 1.3 2004/04/27 03:01:12 matthewbrett Exp $
 
 use File::Copy;
 use File::Basename;
@@ -525,22 +525,6 @@ sub write_minc_image{
     }
 
     if ($options{view}){ system "register $outfile\n"; }
-}
-
-sub make_ana{
-    my($f_name, $h, $mat, $endian) = @_;
-    
-    my($f_handle) = new FileHandle;
-    open($f_handle, "+>$f_name.img") or 
-	die "Error opening file: $f_name.img";
-    binmode($f_handle);  # needed for DOS etc
-    
-    # write header and mat files
-    $h->write_to($f_name,$ghdr->{"endian"});
-    $matfile->write_to($f_name)
-	if defined($ghdr->{mat}[$l]);
-
-    return $f_handle;
 }
 
 __END__
