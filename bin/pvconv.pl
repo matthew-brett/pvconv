@@ -15,7 +15,7 @@
 # based on pv2mnc and ana2mnc (see http://www.cmr.uq.edu.au/~rotor/software/)
 # by Andrew Janke - rotor@cmr.uq.edu.au, with thanks
 #
-# $Id: pvconv.pl,v 1.5 2004/04/28 06:40:40 matthewbrett Exp $
+# $Id: pvconv.pl,v 1.6 2004/11/10 19:08:40 matthewbrett Exp $
 
 use File::Copy;
 use File::Basename;
@@ -38,7 +38,7 @@ use strict;
 use vars qw($VERSION );
 
 # version
-$VERSION = 0.56;
+$VERSION = 0.57;
 
 # extension for Bruker header text file
 my($brkhdrext) = ".brkhdr";
@@ -236,12 +236,13 @@ SERIESLOOP: foreach $seriesno (@seriesnos){
     }
 
 # Read text header data
-  ($hdrdata, $warning) = bruker_text_headers($pv_dir, $seriesno,
-				      $options{recono}, \%options);
-  unless (!($warning) || $options{quiet}) {
-    warn  $warning;
-  }
-
+    ($hdrdata, $warning) = bruker_text_headers($pv_dir, $seriesno,
+					       $options{recono}, \%options);
+    unless (!($warning) || $options{quiet}) {
+	warn  $warning;
+    }
+    next SERIESLOOP unless ($hdrdata);
+    
 # Parse entire block into hash
     %bhdr = parse_bruker_params($hdrdata);
 

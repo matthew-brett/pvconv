@@ -6,7 +6,7 @@
 #
 # Matthew Brett - matthewb@berkeley.edu
 #
-# $Id: pvshow.pl,v 1.3 2004/04/27 19:12:21 matthewbrett Exp $
+# $Id: pvshow.pl,v 1.4 2004/11/10 19:08:40 matthewbrett Exp $
 
 use File::Basename;
 use FileHandle;
@@ -19,12 +19,12 @@ use Math::Matrix;
 
 use Bruker::Utils 0.16
   qw( bruker_series bruker_find_dir parse_bruker_params bruker2generic 
-      bruker_text_headers);
+      bruker_text_headers best_of);
 
 use strict;
 
 # version
-my ($version) = "0.02";
+my ($version) = "0.03";
 
 # extension for Bruker header text file
 my($brkhdrext) = ".brkhdr";
@@ -103,36 +103,51 @@ STUDYLOOP: foreach $pv_dir(@$dirlist) {
     }
     
   SERIESLOOP: foreach $seriesno (@seriesnos) {
-# read in files, with errors as appropriate
-      ($hdrdata, $warning) = bruker_text_headers($pv_dir, $seriesno,
-						 $options{recono});
-      unless (!($warning) || $options{quiet}) {
-	  warn  $warning;
-      }
-      
-# Parse entire block into hash
-      %bhdr = parse_bruker_params($hdrdata);
-      
-# parse Bruker parameters into a generic header
-      %ghdr = bruker2generic(\%bhdr, \%options);
-      
 # check for reconstructed data
       if (-e "$pv_dir/$seriesno/pdata/$options{recono}/2dseq") {
 	  $recodata = "Yes";
       } else {
 	  $recodata = "No";
       }
+
+# read in files, with errors as appropriate
+      ($hdrdata, $warning) = bruker_text_headers($pv_dir, $seriesno,
+						 $options{recono});
+      unless (!($warning) || $options{quiet}) {
+	  warn  $warning;
+      }
+
+      if ($hdrdata) { # Text files seems to be more or less OK
       
+# Parse entire block into hash
+	  %bhdr = parse_bruker_params($hdrdata);
+      
+# parse Bruker parameters into a generic header
+	  %ghdr = bruker2generic(\%bhdr, \%options);
+	  
+	  # report
+	  print(sprintf("%s:%d: %s; time: %s; reps: %d; reco: %s\n", 
+			$pv_dir,
+			$seriesno,
+			$bhdr{ACQ_protocol_name}, 
+			$bhdr{ACQ_time},
+			$ghdr{dim}[3],
+			$recodata,
+			)
+		);
+      } else {
       # report
-      print(sprintf("%s:%d: %s; time: %s; reps: %d; reco: %s\n", 
+      print(sprintf("%s:%d: %s; time: %s; reps: %s; reco: %s\n", 
 		    $pv_dir,
 		    $seriesno,
-		    $bhdr{ACQ_protocol_name}, 
-		    $bhdr{ACQ_time},
-		    $ghdr{dim}[3],
+		    'N/K', 
+		    'N/K',
+		    'N/K',
 		    $recodata,
 		    )
 	    );
+      }
+
   }
 }
 exit 0;
