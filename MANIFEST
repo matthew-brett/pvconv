@@ -1,0 +1,15 @@
+AUTHORS
+bin/brk2mat.pl			Creates SPM transformation matrix
+bin/pvconv.pl			Bruker conversion program
+bin/pvshow.pl			Shows parameters from Bruker data
+CHANGES
+config/.pvconv.pl		Example configuration file for pvconv.pl
+config/.pvshow.pl		Example configuration file for pvshow.pl
+lib/Bruker/Utils.pm		Utilities for parsing Bruker data
+lib/Data/Struct/Analyze.pm	Analyze header format implemented with Data/Struct/Base
+lib/Data/Struct/Base.pm		Generic fixed field data module 
+lib/Data/Struct/Matfile.pm	Simple matlab matfile format implemented with Data/Struct/Base
+Makefile.PL			perl Makefile
+MANIFEST			This list of files
+META.yml			Module meta data in yaml format
+README

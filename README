@@ -1,0 +1,76 @@
+pvconv	
+------
+
+pvconv is a converter for Bruker format MRI image data.  It contains
+some programs including the converter, and libraries supporting reads
+of Bruker data and handling of Analyze and matlab format files.
+
+See html documentation at http://pvconv.sourceforge.net.
+
+PREREQUISITES
+
+In order to install and use this package you will need Perl version 5.
+Some modules within this package depend on other packages that are
+distributed separately from Perl.  We will need the following packages
+installed before you install pvconv:
+
+	Math-Matrix
+	Getopt-ArgvFile
+
+These packages should be available on CPAN (see below).
+
+INSTALLATION
+
+You install pvconv using the normal perl module distribution drill:
+
+   perl Makefile.PL
+   make
+   make install
+
+If you want to install a private copy of pvconv in your home
+directory, then you should try to produce the initial Makefile with
+something like this command:
+
+  perl Makefile.PL PREFIX=~/perl
+
+This will put all the library modules in ~/perl/lib, and the scripts
+in ~/perl/bin.  If you want to be more tricky you could try something
+like:
+
+  perl Makefile.PL LIB=~/perl INSTALLBIN=~/bin
+
+will put the libraries into ~/perl/lib, and the scripts into ~/bin.
+
+The Makefile.PL program will start out by checking your perl
+installation for a few packages that are recommended to be installed
+together with pvconv.
+
+DOCUMENTATION
+
+There is html documentation at http://pvconv.sourceforge.net.  Also,
+see the pod documentation in pvconv.pl for an overview of the
+program. See ./CHANGES for recent changes.
+
+POD style documentation is included in the scripts pvconv.pl and
+pvshow.pl.  These are normally converted to manual pages and installed
+as part of the "make install" process.  You should also be able to use
+the 'perldoc' utility to extract and read documentation from the files
+directly.
+
+SUPPORT
+
+Please send questions and bug reports to matthewb@berkeley.edu
+
+AVAILABILITY
+
+The latest version of pvconv should always be available from:
+
+     http://pvconv.sourceforge.net
+
+COPYRIGHT
+
+  © 2001-2004 Matthew Brett. Andrew Janke.  All rights reserved.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+

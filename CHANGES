@@ -1,0 +1,86 @@
+Change file for pvconv utilities
+--------------------------------
+
+Original version 0.1  17/2/01
+-----------------------------
+
+Version 0.2  24/8/01
+--------------------
+
+Added mat file support, using objects/modules
+
+Version 0.50  2/4/02 
+--------------------
+
+Support for paravision 2.1 methods files, bug fix to byte swapping
+
+Version 0.51  19/8/02 
+---------------------
+
+Text header reading moved to Bruker::Utils module as bruker_text_headers
+pvshow therefore updated to use methods files as above
+Version checking for version of Bruker::Utils
+
+Version 0.52  22/8/02 
+---------------------
+
+Added -dirext option to add directory extension to default file name
+
+Version 0.53  23/8/02 
+---------------------
+
+Added version checking for Math::Matrix package to Bruker::Utils
+
+Version 0.54  13/9/02 
+---------------------
+
+Edits to expand range of reconstruction parameters correctly handled -
+Edits to Utils.pm (now version 0.14).
+
+Corrected handling of transposition coding, moved from hash into
+function.  Added routine to allow default value if given parameter
+value not defined. Corrected bug in transformation matrix code to use
+ACQ_fov instead of RECO_fov to calculate voxel sizes (these are
+usually the same).  
+
+Added fairly comprehensive help docs via pod, pod2usage.
+
+Version 0.55  3 Feb 03
+----------------------
+
+Option for using configuration files added using Getopt:ArgvFile.
+Getopt::ArgvFile now needed as part of install.
+
+File suffix / protocol name matches moved from code into configuration
+file, and can now be passed as command line argument.  Example
+configuration file provided with archive.
+
+Changed default behaviour from converting first series to converting
+all images in directory.
+
+Added option to omit subject information from info saved in brkhdr
+text file, and made this the default.
+
+Searchpaths for Bruker data can be passed in configuration files or
+command line args, allowing default data directories to be specified.
+If the subject number passed as input to pvconv.pl does not have an
+extension, the program does a wildcard search through the directories
+in the searchpath, for directories matching "<passed subject no>*".
+
+Moved session number find into Bruker/Utils.pm, now version 0.16
+
+Fixed bugs in handling of second argument on command line, added
+warning that this usage is deprecated.
+
+Many updates to help documentation.
+
+Pvshow extensively updated to use new routines in Bruker::Utils,
+option files, and its own pod documentation. Config file with archive.
+
+Version 0.56  10 Apr 04
+-----------------------
+Hosted at sourceforge
+Much smoother package/install using Makemaker
+Strip @vis lines from paravision 3.0 text files
+Fix for conversion of complex images
+
