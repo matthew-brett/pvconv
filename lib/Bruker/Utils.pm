@@ -1,6 +1,6 @@
 # Bruker::Utils package; parsing for Bruker data format
 #
-# $Id: Utils.pm,v 1.1 2004/04/22 18:26:03 matthewbrett Exp $
+# $Id: Utils.pm,v 1.2 2004/09/14 21:30:45 matthewbrett Exp $
 
 package Bruker::Utils;
 
@@ -335,15 +335,14 @@ sub bruker2generic{
 		 ($ghdr{sl_mode} eq "Contiguous"))
 		&& defined($bhdr->{'ACQ_slice_sepn'})) {
 		$ghdr{sl_sepn} = $bhdr->{'ACQ_slice_sepn'}[0];
-		$ghdr{vox}[2] = $ghdr{sl_sepn};
+		$ghdr{vox}[2] = $ghdr{sl_sepn} if ($ghdr{sl_sepn} > 0);
 	    }
 	} else {		# 3D
 	    $ghdr{sl_thick}= $ghdr{vox}[2];
 	    $ghdr{sl_sepn} = $ghdr{sl_thick};
 	}
-	if ($ghdr{sl_sepn}) {
-	    $ghdr{sl_gap} = $ghdr{sl_sepn} - $ghdr{sl_thick};
-	}
+	$ghdr{sl_gap} = $ghdr{sl_sepn} > 0 ? 
+	    $ghdr{sl_sepn} - $ghdr{sl_thick} : 0;
 
 	# NI is the total number of images (=images) acquired in a
 	# repetition so, for a 2D volume, and one layer (e.g. EPI),
@@ -355,7 +354,7 @@ sub bruker2generic{
 	$ghdr{layer_nr} = $ghdr{image_nr} / $bhdr->{'NSLICES'};
 
 	# no of volumes
-	$ghdr{dim}[3]=$bhdr->{'ACQ_nr_completed'};
+	$ghdr{dim}[3]=best_of( $bhdr->{'ACQ_nr_completed'}, 1);
 
 	# the TR.  This seems to be an array, with one element
 	# for each multiplex step. We'll take the first I guess.
@@ -534,8 +533,18 @@ sub bruker2generic{
 	    }
 
 # gradient matrix - is transposed
+# There is one (3x3) gradient matrix for each slice - see Para_Cla.pdf in the Paravision documentation
+# Quoting:
+# ACQ_grad_matrix - is a three dimensional array of doubles to describe the
+# orientation of the images to be measured.
+#   · The fast dimension has three items to describe gradient vectors for the Gx/
+#      Gy/Gz coordinate system. The gradient vectors should also describe a
+#      unit sphere with a radius of 1.0.
+#   · The medium dimension has also three items to describe the read-, phase-
+#      and slice gradient.
+#   · The slow dimension is used to describe all slices to be measured.
 	    $rotn = $i4->clone();
-	    $gradmat = $bhdr->{ACQ_grad_matrix}[$l];
+	    $gradmat = $bhdr->{ACQ_grad_matrix}[0];
 	    for $i(0..2){
 		for $j(0..2){
 		    $rotn->[$i][$j] = $gradmat->[$j][$i];
