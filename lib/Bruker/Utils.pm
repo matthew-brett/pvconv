@@ -1,6 +1,6 @@
 # Bruker::Utils package; parsing for Bruker data format
 #
-# $Id: Utils.pm,v 1.2 2004/09/14 21:30:45 matthewbrett Exp $
+# $Id: Utils.pm,v 1.3 2004/11/10 19:05:25 matthewbrett Exp $
 
 package Bruker::Utils;
 
@@ -11,25 +11,27 @@ require Exporter;
 @ISA = qw( Exporter );
 @EXPORT = qw( );
 @EXPORT_OK = qw(bruker_series bruker_find_dir parse_bruker_params 
-		bruker2generic bruker_transposition bruker_text_headers);
+		bruker2generic bruker_transposition bruker_text_headers best_of);
 
 use strict;
 use vars qw($VERSION );
 
-$VERSION = 0.17;
+$VERSION = 0.18;
 
 # Bruker text files to load, with error messages
 my($subjfile) = [["subject"],
 		 "no subject info - minor problem"];
+
+# Format; file names to try, message if missing, flag=1 if fatal
 my(@paramfiles) = (
 		   [["%d/imnd", "%d/method"],
-		    "input params - transformation matrix will fail"],
+		    "input params - transformation matrix will fail", 0],
 		   [["%d/acqp"],
-		    "output params - expect problems with size, timing etc"],
+		    "output params - expect problems with size, timing etc", 0],
 		   [["%d/pdata/%d/reco"], 
-		    "reco params - conversion will probably fail"],
+		    "reco params - cannot do conversion", 1],
 		   [["%d/pdata/%d/d3proc"],
-		    "image display params - used if other files are missing"],
+		    "image display params - used if other files are missing", 0],
 		  );
 
 # option defaults
@@ -125,8 +127,14 @@ sub bruker_text_headers{
 	    }
 	}
 	unless ($foundf) {
-	  $warning .=  "No $file_loc file; $pfile->[1]; continuing...\n";
-	  next PFILE;
+	    if ($pfile->[2]) { # abort
+		$warning .=  "No $file_loc file; $pfile->[1]; aborting...\n";
+		$hdrdata = undef;
+		last PFILE;
+	    } else {
+		$warning .=  "No $file_loc file; $pfile->[1]; continuing...\n";
+		next PFILE;
+	    }
 	}
 
 # Read input files as one long record.
@@ -138,7 +146,7 @@ sub bruker_text_headers{
     }
 
 # dos2unix strip
-    $hdrdata =~ s/\r//sg;
+    $hdrdata =~ s/\r//sg if $hdrdata;
 
     return($hdrdata, $warning);
 }
@@ -293,8 +301,6 @@ sub bruker2generic{
     my ($key, $code, @t, $tmp, $bruk_trans, @acq_dim);
     my ($start, $ft2mm, $trans, $recoff, $so_far, $rotn, $vx2mm, $radio);
     my (@ftdim, $is2d, @fov, @vox, $vox, $off, $i, $j, $gradmat, @vector);
-
-	
    
     my %ghdr = ();
     my $i1 = 0;
@@ -341,8 +347,12 @@ sub bruker2generic{
 	    $ghdr{sl_thick}= $ghdr{vox}[2];
 	    $ghdr{sl_sepn} = $ghdr{sl_thick};
 	}
-	$ghdr{sl_gap} = $ghdr{sl_sepn} > 0 ? 
-	    $ghdr{sl_sepn} - $ghdr{sl_thick} : 0;
+	if ($ghdr{sl_sepn}) {
+	    $ghdr{sl_gap} = $ghdr{sl_sepn} > 0 ? 
+		$ghdr{sl_sepn} - $ghdr{sl_thick} : 0;
+	} else { 
+	    $ghdr{sl_gap} = $ghdr{sl_thick};
+	}
 
 	# NI is the total number of images (=images) acquired in a
 	# repetition so, for a 2D volume, and one layer (e.g. EPI),
@@ -470,8 +480,8 @@ sub bruker2generic{
 	if (best_of(
 		    $bhdr->{IMND_read_offset},
 		    $bhdr->{PVM_ReadOffset}, 
-		    $bhdr->{PVM_SPackArrReadOffset})
-	    ) {
+		    $bhdr->{PVM_SPackArrReadOffset}) &&
+	    $bhdr->{ACQ_fov}) {
 
 # Compile matrix
 	    $is2d = (@{$bhdr->{ACQ_fov}} == 2);
