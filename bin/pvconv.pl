@@ -15,7 +15,7 @@
 # based on pv2mnc and ana2mnc (see http://www.cmr.uq.edu.au/~rotor/software/)
 # by Andrew Janke - rotor@cmr.uq.edu.au, with thanks
 #
-# $Id: pvconv.pl,v 1.1 2004/04/22 18:26:03 matthewbrett Exp $
+# $Id: pvconv.pl,v 1.2 2004/04/27 02:58:35 matthewbrett Exp $
 
 use File::Copy;
 use File::Basename;
@@ -528,7 +528,7 @@ sub write_minc_image{
 }
 
 sub make_ana{
-    my($f_name $h $mat $endian) = @_;
+    my($f_name, $h, $mat, $endian) = @_;
     
     my($f_handle) = new FileHandle;
     open($f_handle, "+>$f_name.img") or 
