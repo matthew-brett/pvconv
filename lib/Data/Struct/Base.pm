@@ -1,6 +1,6 @@
 # Data::Struct::Base - generic type for fixed-format binary data
 #
-# $Id: Base.pm,v 1.1 2004/04/22 18:26:03 matthewbrett Exp $
+# $Id: Base.pm,v 1.2 2004/04/28 06:39:27 matthewbrett Exp $
 
 package Data::Struct::Base;
 
@@ -124,6 +124,22 @@ sub new {
     bless $self, $class;
     $self->init($arrref);
     return $self;
+}
+
+# clone object
+sub clone {
+    my($self, $class, $new_self, $arrref, $hf);
+    $self = shift;
+    croak "$self is not an object" unless ref($self);
+    $class = ref($self);
+    $arrref = $self->{starr};
+    $new_self = {%$self};
+    foreach $hf(keys(%HASHFIELDS)) {
+	$new_self->{$hf} = {%{$self->{$hf}}};
+    }
+    bless $new_self, ref($self);
+    $new_self->init($arrref);
+    return $new_self;
 }
 
 # parse and fill struct-ashash etc from struct->formatted
