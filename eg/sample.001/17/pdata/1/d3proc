@@ -1,0 +1,25 @@
+##TITLE=Parameter List
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN= Bruker Medizintechnik GMBH
+##OWNER=pvuser
+$$ Fri Apr 23 10:33:03 2004 BST (UT+1h)  pvuser
+$$ /app/pvm/data/pvuser/nmr/W040293.pr1/17/pdata/1/d3proc
+##$SEQTYPE=0
+##$DATTYPE=3
+##$IM_SIX=256
+##$IM_SIY=256
+##$IM_SIZ=256
+##$IM_SIT=1
+##$SIM_SIX=256
+##$SIM_SIY=256
+##$SIM_SIZ=256
+##$SIM_SIT=1
+##$SIM_X0=0
+##$SIM_Y0=0
+##$SIM_Z0=0
+##$SIM_T0=0
+##$CEN_SLC=128
+##$PR_STA=22 25.6 18 0 0 0 0 0 0 0 0 0 0 0 0 1
+##$PR_STP=0 0 0 0 0 0 0 0 0 0 0 0 0 0 8 32
+##END=

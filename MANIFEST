@@ -5,6 +5,31 @@ bin/pvshow.pl			Shows parameters from Bruker data
 CHANGES
 config/.pvconv.pl		Example configuration file for pvconv.pl
 config/.pvshow.pl		Example configuration file for pvshow.pl
+eg/sample.001/10/acqp
+eg/sample.001/10/method
+eg/sample.001/10/pdata/1/2dseq
+eg/sample.001/10/pdata/1/d3proc
+eg/sample.001/10/pdata/1/reco
+eg/sample.001/13/acqp
+eg/sample.001/13/imnd
+eg/sample.001/13/pdata/1/2dseq
+eg/sample.001/13/pdata/1/d3proc
+eg/sample.001/13/pdata/1/reco
+eg/sample.001/16/acqp
+eg/sample.001/16/imnd
+eg/sample.001/16/pdata/1/2dseq
+eg/sample.001/16/pdata/1/d3proc
+eg/sample.001/16/pdata/1/reco
+eg/sample.001/17/acqp
+eg/sample.001/17/imnd
+eg/sample.001/17/pdata/1/2dseq
+eg/sample.001/17/pdata/1/d3proc
+eg/sample.001/17/pdata/1/reco
+eg/sample.001/2/acqp
+eg/sample.001/2/method
+eg/sample.001/2/pdata/1/2dseq
+eg/sample.001/2/pdata/1/d3proc
+eg/sample.001/2/pdata/1/reco
 lib/Bruker/Utils.pm		Utilities for parsing Bruker data
 lib/Data/Struct/Analyze.pm	Analyze header format implemented with Data/Struct/Base
 lib/Data/Struct/Base.pm		Generic fixed field data module 
@@ -13,3 +38,4 @@ Makefile.PL			perl Makefile
 MANIFEST			This list of files
 META.yml			Module meta data in yaml format
 README
+t/basic.t			Basic test file

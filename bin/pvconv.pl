@@ -15,7 +15,7 @@
 # based on pv2mnc and ana2mnc (see http://www.cmr.uq.edu.au/~rotor/software/)
 # by Andrew Janke - rotor@cmr.uq.edu.au, with thanks
 #
-# $Id: pvconv.pl,v 1.3 2004/04/27 03:01:12 matthewbrett Exp $
+# $Id: pvconv.pl,v 1.4 2004/04/27 06:15:19 matthewbrett Exp $
 
 use File::Copy;
 use File::Basename;
@@ -309,7 +309,7 @@ SERIESLOOP: foreach $seriesno (@seriesnos){
 	die "Unrecognized output format $options{outtype}\n";
     }
 }
-
+exit 0;
 
 ########################################################################
 # subroutines

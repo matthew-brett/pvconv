@@ -1,0 +1,134 @@
+##TITLE=Parameter List
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN= Bruker Medizintechnik GMBH
+##OWNER=pvuser
+$$ Fri Apr 23 09:07:13 2004 BST (UT+1h)  pvuser
+$$ /app/pvm/data/pvuser/nmr/W040293.pr1/2/pdata/1/reco
+##$RECO_mode=FT_MODE
+##$RECO_inp_order=NO_REORDERING
+##$RECO_inp_size=( 2 )
+64 64
+##$RECO_ft_size=( 2 )
+64 64
+##$RECO_fov=( 2 )
+20.0000 20.0000
+##$RECO_size=( 2 )
+64 64
+##$RECO_offset=( 2, 21 )
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0
+##$RECO_regrid_mode=NO_REGRID
+##$RECO_regrid_offset=0.00
+##$RECO_ramp_gap=0.00
+##$RECO_ramp_time=0.00
+##$RECO_ne_mode=NO_NAV_DATA
+##$RECO_ne_dist=NeNoInterleave
+##$RECO_ne_dens=NeCorrPerScan
+##$RECO_ne_type=NAV_PHASE
+##$RECO_ne_vals=( 1, 2 )
+0 0
+##$RECO_bc_mode=( 2 )
+AUTO_OFFSET_BC NO_BC
+##$RECO_bc_start=( 2 )
+48 48
+##$RECO_bc_len=( 2 )
+16 16
+##$RECO_dc_offset=( 2 )
+0 0
+##$RECO_dc_divisor=1
+##$RECO_bc_coroff=( 2 )
+0.0 0.0
+##$RECO_qopts=( 2 )
+CONJ_AND_QNEG NO_QOPTS
+##$RECO_wdw_mode=( 2 )
+NO_WDW NO_WDW
+##$RECO_lb=( 2 )
+-0.500 -0.500
+##$RECO_sw=( 2 )
+101010.101 1.000
+##$RECO_gb=( 2 )
+0.500 0.500
+##$RECO_sbs=( 2 )
+1.000 1.000
+##$RECO_tm1=( 2 )
+0.250 0.250
+##$RECO_tm2=( 2 )
+0.750 0.750
+##$RECO_ft_mode=( 2 )
+COMPLEX_FFT COMPLEX_FFT
+##$RECO_pc_mode=( 2 )
+NO_PC NO_PC
+##$RECO_pc_lin=( 2 )
+(0.00, 0.00) (0.00, 0.00)
+##$RECO_rotate=( 2, 21 )
+0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 
+0.0000 
+0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.6603 0.6603 
+0.6603 
+0.6603 0.6603 0.6603 0.6603 0.6603 0.6603 0.6603 0.6603 0.6603 0.6603 0.6603 
+0.6603 
+0.6603 0.6603 0.6603 0.6603 0.6603 0.6603
+##$RECO_ppc_mode=NO_PPC
+##$RECO_ref_image=0
+##$RECO_nr_supports=0.4
+##$RECO_sig_threshold=0.15
+##$RECO_ppc_degree=1
+##$RECO_ppc_coeffs=( 21, 2, 2 )
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0
+##$RECO_dc_elim=Yes
+##$RECO_transposition=( 21 )
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+##$RECO_image_type=MAGNITUDE_IMAGE
+##$RECO_image_threshold=0.15
+##$RECO_ir_scale=10
+##$RECO_wordtype=_16BIT_SGN_INT
+##$RECO_map_mode=PERCENTILE_MAPPING
+##$RECO_map_range=( 2 )
+-2.14748e+09 2.14748e+09
+##$RECO_map_percentile=( 2 )
+1 99.9
+##$RECO_map_error=0.025
+##$RECO_globex=( 21 )
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+##$RECO_minima=( 21 )
+5 10 6 19 6 3 5 6 14 8 8 11 1 8 3 9 5 2 2 5 3
+##$RECO_maxima=( 21 )
+32767 32767 32767 32767 32767 32767 32767 32767 32767 32767 32767 32767 32767 
+32767 26444 27649 23241 24103 25867 27058 25414
+##$RECO_map_min=( 21 )
+-656828.875 -656828.875 -656828.875 -656828.875 -656828.875 -656828.875 
+-656828.875 
+-656828.875 -656828.875 -656828.875 -656828.875 -656828.875 -656828.875 
+-656828.875 
+-656828.875 -656828.875 -656828.875 -656828.875 -656828.875 -656828.875 
+-656828.875
+
+##$RECO_map_max=( 21 )
+656828.875 656828.875 656828.875 656828.875 656828.875 656828.875 656828.875 
+656828.875 
+656828.875 656828.875 656828.875 656828.875 656828.875 656828.875 656828.875 
+656828.875 
+656828.875 656828.875 656828.875 656828.875 656828.875
+##$RECO_map_offset=( 21 )
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+##$RECO_map_slope=( 21 )
+0.0498867 0.0498867 0.0498867 0.0498867 0.0498867 0.0498867 0.0498867 
+0.0498867 
+0.0498867 0.0498867 0.0498867 0.0498867 0.0498867 0.0498867 0.0498867 
+0.0498867 
+0.0498867 0.0498867 0.0498867 0.0498867 0.0498867
+##$RECO_byte_order=bigEndian
+##$RECO_time=( 24 )
+<09:06:54 23 Apr 2004>
+##$RECO_abs_time=1082707614
+##$RECO_base_image_uid=( 65 )
+<2.16.756.5.5.14.3232235805.1082707631.153176>
+##$GS_reco_display=Yes
+##$GS_image_type=MAGNITUDE_IMAGE
+##$GO_reco_display=Yes
+##$GO_reco_each_nr=No
+##$GO_max_reco_mem=0
+##END=

@@ -6,7 +6,7 @@
 #
 # Matthew Brett - matthewb@berkeley.edu
 #
-# $Id: pvshow.pl,v 1.1 2004/04/22 18:26:03 matthewbrett Exp $
+# $Id: pvshow.pl,v 1.2 2004/04/27 06:15:19 matthewbrett Exp $
 
 use File::Basename;
 use FileHandle;
@@ -135,7 +135,7 @@ STUDYLOOP: foreach $pv_dir(@$dirlist) {
 	    );
   }
 }
-
+exit 0;
 
 ########################################################################
 # subroutines

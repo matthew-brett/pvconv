@@ -1,0 +1,302 @@
+##TITLE=Parameter List
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN= Bruker Medizintechnik GMBH
+##OWNER=pvuser
+$$ Fri Apr 23 10:02:14 2004 BST (UT+1h)  pvuser
+$$ /app/pvm/data/pvuser/nmr/W040293.pr1/13/acqp
+##$PULPROG=( 16 )
+<gefi_tomo.ppg>
+##$GRDPROG=( 16 )
+<gefi_tomo>
+##$ACQ_experiment_mode=SingleExperiment
+##$ACQ_n_experiments=1
+##$ACQ_experiments=( 1 )
+(</app/pvm/data/pvuser/nmr/W040293.pr1/13/pdata/1>, 1, 1, 1)
+##$ACQ_user_filter=No
+##$ACQ_DS_enabled=No
+##$ACQ_dim=3
+##$ACQ_dim_desc=( 3 )
+Spatial Spatial Spatial
+##$ACQ_size=( 3 )
+512 64 64
+##$ACQ_ns_list_size=1
+##$ACQ_ns=1
+##$ACQ_ns_list=( 1 )
+1
+##$ACQ_phase_factor=1
+##$ACQ_scan_size=One_scan
+##$NI=1
+##$NA=1
+##$NAE=1
+##$NR=1
+##$DS=64
+##$D=( 32 )
+0.010100220 0.000000000 0.000000000 0.000000000 0.000125000 0.000000000 
+0.000220060 
+0.000000000 0.000150000 0.000000000 0.001000000 0.000000000 0.000000000 
+0.000000000 
+0.000000000 0.000000000 0.002000000 0.002000000 0.000000000 0.000000000 
+0.000550000 
+0.009800220 0.000000000 0.000000000 0.000010000 0.000000000 0.000100000 
+0.000000000 
+0.000000000 0.000000000 0.000000000 0.000000000
+##$P=( 32 )
+0 3200 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+##$PL=( 32 )
+0 120 120 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+##$TPQQ=( 8 )
+(<gauss>, 26.3448, 0) (<gauss>, 150, 0) (<mdeft_half_sech>, 150, 0) (<gauss>, 
+150, 0) (<>, 150, 0) (<>, 150, 0) (<sech>, 150, 0) (<>, 150, 0)
+##$DPQQ=( 8 )
+(<>, 50, 0) (<>, 0, 0) (<>, 0, 0) (<>, 0, 0) (<>, 0, 0) (<>, 0, 0) (<>, 0, 0) 
+(<>, 0, 0)
+##$SW_h=24038.46
+##$SW=191.498
+##$FW=625000.00
+##$RG=36.6756
+##$AQ_mod=qdig
+##$DR=18
+##$PAPS=CP
+##$PH_ref=0
+##$ACQ_BF_enable=Yes
+##$BF1=125.5282664
+##$SFO1=125.5282664
+##$O1=0.000000
+##$ACQ_O1_list_size=1
+##$ACQ_O1_list=( 1 )
+696.093750
+##$ACQ_O1B_list_size=1
+##$ACQ_O1B_list=( 1 )
+0.000000
+##$BF2=125.5282664
+##$SFO2=125.5282664
+##$O2=0.000000
+##$ACQ_O2_list_size=1
+##$ACQ_O2_list=( 1 )
+0.000000
+##$BF3=125.5282664
+##$SFO3=125.5282664
+##$O3=0.000000
+##$ACQ_O3_list_size=1
+##$ACQ_O3_list=( 1 )
+0.000000
+##$BF4=125.5288490
+##$SFO4=125.5288490
+##$O4=0.000000
+##$BF5=125.5288490
+##$SFO5=125.5288490
+##$O5=0.000000
+##$BF6=125.5288490
+##$SFO6=125.5288490
+##$O6=0.000000
+##$BF7=125.5288490
+##$SFO7=125.5288490
+##$O7=0.000000
+##$BF8=125.5288490
+##$SFO8=125.5288490
+##$O8=0.000000
+##$NUC1=( 8 )
+<1H>
+##$NUC2=( 8 )
+<off>
+##$NUC3=( 8 )
+<off>
+##$NUC4=( 8 )
+<off>
+##$NUC5=( 8 )
+<off>
+##$NUC6=( 8 )
+<off>
+##$NUC7=( 8 )
+<off>
+##$NUC8=( 8 )
+<off>
+##$NUCLEUS=( 8 )
+<1H>
+##$L=( 32 )
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 64 0 0 0 0 0 0 0 0 1 0 0 0 0 0
+##$ACQ_vd_list_size=1
+##$ACQ_vd_list=( 1 )
+0.000100000
+##$ACQ_vp_list_size=0
+##$ACQ_status=( 20 )
+<SK330>
+##$ACQ_protocol_location=( 40 )
+<fmri>
+##$ACQ_protocol_name=( 40 )
+<new 3d phase 1a-sgh>
+##$ACQ_scan_name=( 64 )
+<new 3d phase 1a-sgh>
+##$ACQ_method=( 20 )
+<GEFI_TOMO>
+##$ACQ_completed=Yes
+##$ACQ_scans_completed=0
+##$ACQ_nr_completed=1
+##$ACQ_total_completed=4096
+##$ACQ_word_size=_32_BIT
+##$NECHOES=1
+##$ACQ_fov=( 3 )
+25.60 25.60 25.60
+##$ACQ_read_ext=1
+##$ACQ_slice_angle=( 1 )
+0.00
+##$ACQ_slice_orient=Arbitrary_Oblique
+##$ACQ_patient_pos=Head_Supine
+##$ACQ_read_offset=( 1 )
+0.000
+##$ACQ_phase1_offset=( 1 )
+0.000
+##$ACQ_phase2_offset=( 1 )
+0.000
+##$ACQ_slice_sepn=( 1 )
+0.00
+##$ACQ_slice_sepn_mode=Equidistant
+##$ACQ_slice_thick=256.000
+##$ACQ_slice_offset=( 1 )
+0.000
+##$ACQ_obj_order=( 1 )
+0
+##$ACQ_flip_angle=30
+##$ACQ_echo_time=( 1 )
+7.000
+##$ACQ_inter_echo_time=( 1 )
+7.000
+##$ACQ_recov_time=( 1 )
+31.23
+##$ACQ_repetition_time=( 1 )
+31.23
+##$ACQ_scan_time=0
+##$ACQ_inversion_time=( 1 )
+0.000
+##$ACQ_time=( 24 )
+<09:59:49 23 Apr 2004>
+##$ACQ_abs_time=1082710789
+##$ACQ_operator=( 16 )
+<pvuser>
+##$ACQ_transmitter_coil=( 16 )
+<Code: 10>
+##$ACQ_trigger_enable=No
+##$ACQ_institution=( 48 )
+<Wolfson Brain Imaging Centre>
+##$ACQ_station=( 16 )
+<MEDSPEC S300>
+##$ACQ_sw_version=( 16 )
+<PV 2.1.1>
+##$ACQ_calib_date=( 24 )
+<16:55:08 21 Apr 2004>
+##$Coil_operation=Single_Coil
+##$BYTORDA=big
+##$INSTRUM=( 16 )
+<MEDSPEC S300>
+##$FQ1LIST=( 16 )
+<ACQ_O1_list>
+##$FQ2LIST=( 16 )
+<ACQ_O2_list>
+##$FQ3LIST=( 16 )
+<ACQ_O3_list>
+##$FQ8LIST=( 16 )
+<ACQ_O1B_list>
+##$SP=( 16 )
+26.3448 150 150 150 150 150 150 150 50 0 0 0 0 0 0 0
+##$SPOFFS=( 16 )
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+##$SPNAM0=( 16 )
+<gauss>
+##$SPNAM1=( 16 )
+<gauss>
+##$SPNAM2=( 16 )
+<mdeft_half_sech>
+##$SPNAM3=( 16 )
+<gauss>
+##$SPNAM4=( 16 )
+<>
+##$SPNAM5=( 16 )
+<>
+##$SPNAM6=( 16 )
+<sech>
+##$SPNAM7=( 16 )
+<>
+##$SPNAM8=( 16 )
+<>
+##$SPNAM9=( 16 )
+<>
+##$SPNAM10=( 16 )
+<>
+##$SPNAM11=( 16 )
+<>
+##$SPNAM12=( 16 )
+<>
+##$SPNAM13=( 16 )
+<>
+##$SPNAM14=( 16 )
+<>
+##$SPNAM15=( 16 )
+<>
+##$HPPRGN=normal
+##$LOCNUC=( 8 )
+<off>
+##$SOLVENT=( 16 )
+<>
+##$DIGMOD=digital_mode
+##$DIGTYP=_HADC_HRD16_2
+##$DQDMODE=DQDMODE_sub
+##$DSPFIRM=DSP_medium
+##$DECIM=32
+##$DSPFVS=15
+##$ACQ_scan_shift=-28
+##$DE=6.0000000
+##$FCUCHAN=( 10 )
+0 1 0 0 0 0 0 0 0 0
+##$RSEL=( 10 )
+0 2 0 0 0 0 0 0 0 0
+##$SWIBOX=( 16 )
+0 0 3 3 0 0 0 0 0 0 0 0 0 0 0 0
+##$PRECHAN=( 16 )
+5 5 5 2 5 5 5 5 5 5 5 5 5 5 5 5
+##$OBSCHAN=( 10 )
+0 1 0 0 0 0 0 0 0 0
+##$ACQ_2nd_preamp=No_Second_Preamp
+##$ACQ_n_trim=11
+##$ACQ_trim=( 11, 3 )
+0.326214 0.326214 0.326214 -1.6579 -1.6579 -1.6579 19.3647 19.3647 19.3647 
+-19.3647 
+-19.3647 -19.3647 -64.5576 -64.5576 -64.5576 7.12881 7.12881 7.12881 0 0 0 0 
+0 
+0 19.3647 19.3647 19.3647 -19.3647 -19.3647 -19.3647 20.8777 20.8777 20.8777
+##$ACQ_scaling_read=0.0713
+##$ACQ_scaling_phase=0.0178
+##$ACQ_scaling_slice=0.0178
+##$ACQ_grad_matrix=( 1, 3, 3 )
+0 1 0 1 0 0 0 0 1
+##$NSLICES=1
+##$ACQ_rare_factor=1
+##$ACQ_phase_encoding_mode=( 3 )
+Read Linear Linear
+##$ACQ_phase_enc_start=( 3 )
+0.00 -1.00 -1.00
+##$GS_dim=1
+##$GS_disp_update=Each_PE_Step
+##$GS_steady_state=Yes
+##$GS_online_reco=Yes
+##$GS_reco_display=Yes
+##$GS_image_type=MAGNITUDE_IMAGE
+##$GS_typ=Spectrometer_Parameters
+##$GS_auto_name=( 32 )
+<AUTO_scan_rg>
+##$GS_info_receiver_offset=Yes
+##$GS_info_dig_filling=Yes
+##$GS_info_normalized_area=Of_raw_data
+##$GS_info_max_point=Of_raw_data
+##$GS_get_info_points=No_info
+##$GS_continue=Start_gop
+##$GO_init_files=No
+##$GO_data_save=Yes
+##$GO_disp_update=Each_Accum
+##$GO_online_reco=Yes
+##$GO_reco_display=Yes
+##$GO_reco_each_nr=No
+##$GO_max_reco_mem=0
+##$GO_time_est=Yes
+##$GO_use_macro=No
+##END=
