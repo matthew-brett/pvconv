@@ -6,7 +6,7 @@
 #
 # Matthew Brett - matthewb@berkeley.edu
 #
-# $Id: pvshow.pl,v 1.2 2004/04/27 06:15:19 matthewbrett Exp $
+# $Id: pvshow.pl,v 1.3 2004/04/27 19:12:21 matthewbrett Exp $
 
 use File::Basename;
 use FileHandle;
@@ -271,7 +271,7 @@ B<pvshow.pl> displays parameters for Bruker format MRI data.
 
 =head1 AUTHOR
 
-Matthew Brett E<lt>mailto://matthew@mrc-cbu.cam.ac.ukE<gt>
+Matthew Brett E<lt>mailto://matthewb@berkeley.eduE<gt>
 
 =head1 LICENSE
 

@@ -8,7 +8,7 @@
 #
 # Matthew Brett - 24/08/01 
 #
-# $Id: brk2mat.pl,v 1.2 2004/04/27 06:15:19 matthewbrett Exp $
+# $Id: brk2mat.pl,v 1.3 2004/04/27 19:12:20 matthewbrett Exp $
 
 use File::Basename;
 use Getopt::Long;
@@ -146,7 +146,7 @@ B<brk2mat.pl> displays and writes image orientation from .brkhdr file
 
 =head1 AUTHOR
 
-Matthew Brett E<lt>mailto://matthew@mrc-cbu.cam.ac.ukE<gt>
+Matthew Brett E<lt>mailto://matthewb@berkeley.eduE<gt>
 
 =head1 LICENSE
 
