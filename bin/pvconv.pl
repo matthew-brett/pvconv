@@ -15,7 +15,7 @@
 # based on pv2mnc and ana2mnc (see http://www.cmr.uq.edu.au/~rotor/software/)
 # by Andrew Janke - rotor@cmr.uq.edu.au, with thanks
 #
-# $Id: pvconv.pl,v 1.4 2004/04/27 06:15:19 matthewbrett Exp $
+# $Id: pvconv.pl,v 1.5 2004/04/28 06:40:40 matthewbrett Exp $
 
 use File::Copy;
 use File::Basename;
@@ -337,52 +337,64 @@ sub write_analyze_image {
     $h->bitpix($ghdr->{datatype}{bytes}*8);
     
 # initialize the output files
-    my($k)=0; 
-    my($l, $thdr, $o, @outnames, @outhandles, $rimgs_per_vol, $data, 
-       $i, $ln, $matfile);
+    my($k, $l, $thdr, $o, @outnames, @outhandles, $rimgs_per_vol, $data, 
+       $i, $ln, $cn, $n_out_imgs, @hdr_layer, @mat_layer, @complex_suff, @layer_suff);
 
-# Do the header transposition stuff
-    foreach $l (0..$ghdr->{layer_nr}-1) {
+# set up names for different output images
+    if ($ghdr->{iscomplex}) {
+	@complex_suff   = ('_real', '_imag');
+    } else {
+	@complex_suff   = ('');
+    }
+    @layer_suff   = ('');
+    if ($ghdr->{layer_nr} > 1) {
+	foreach $ln(0..$ghdr->{layer_nr}-1) {
+	    $layer_suff[$ln] = '_acq' . $ln;
+	} 
+    }
+    $n_out_imgs = $ghdr->{layer_nr} * ($ghdr->{iscomplex}+1);
+
+# Do the header transposition stuff for each layer
+    foreach $ln (0..$ghdr->{layer_nr}-1) {
+	# copy header for this layer - which may have different transposes
+	$hdr_layer[$ln] = $h->clone();
 	foreach $i (1..4) {
-	    # Note to self; won't this get transposed then retransposed for > 1 layer?
-	    if ($ghdr->{transpose}[$l]{dim}[$i-1]) {
-		$h->dim([$i],$ghdr->{transpose}[$l]{dim}[$i-1]);
+	    if ($ghdr->{transpose}[$ln]{dim}[$i-1]) {
+		$hdr_layer[$ln]->dim([$i],$ghdr->{transpose}[$ln]{dim}[$i-1]);
 	    }
-	    if ($ghdr->{transpose}[$l]{vox}[$i-1]) {
-		$h->pixdim([$i],$ghdr->{transpose}[$l]{vox}[$i-1]);
+	    if ($ghdr->{transpose}[$ln]{vox}[$i-1]) {
+		$hdr_layer[$ln]->pixdim([$i],$ghdr->{transpose}[$ln]{vox}[$i-1]);
 	    }
 	}
-	if ($ghdr->{transpose}[$l]{code} && $options{verbose}) {
-	    print "Transposed $ghdr->{transpose}[$l]{descrip} for layer $l\n";
+	if ($ghdr->{transpose}[$ln]{code} && $options{verbose}) {
+	    print "Transposed $ghdr->{transpose}[$ln]{descrip} for layer $ln\n";
 	}
 
-# to mat file object
-	$matfile = Data::Struct::Matfile->new($ghdr->{mat}[$l], 'M')
-	    if defined($ghdr->{mat}[$l]);
+        # to mat file object
+	$mat_layer[$ln] = Data::Struct::Matfile->new($ghdr->{mat}[$ln], 'M')
+	    if defined($ghdr->{mat}[$ln]);
+    }
 
-	$outnames[$k] = $outfile;
-	if ($ghdr->{layer_nr} > 1) {
-	    $outnames[$k] .= "_acq${l}";
-	}
-	if ($ghdr->{iscomplex}) {
-	    $outnames[$k] .= "_real";
-	    $outnames[$k+1] = $outfile . "_imag";
-	}
-	foreach (0..$ghdr->{iscomplex}) {
+# make hdr and mat info, open img files
+    $k = 0;
+    foreach $cn(0..$ghdr->{iscomplex}) {
+	foreach $ln (0..$ghdr->{layer_nr}-1) {
+	    $outnames[$k] = $outfile . $layer_suff[$ln] . $complex_suff[$cn];
 	    $outhandles[$k] = new FileHandle;
 	    open($outhandles[$k], "+>$outnames[$k].img") or 
 		die "Error opening file: $outnames[$k].img";
 	    binmode($outhandles[$k]);  # needed for DOS etc
 
 	    # write header and mat files
-	    $h->write_to($outnames[$k],$ghdr->{"endian"});
-	    $matfile->write_to($outnames[$k])
-		if defined($ghdr->{mat}[$l]);
+	    $hdr_layer[$ln]->write_to($outnames[$k],$ghdr->{"endian"});
+	    $mat_layer[$ln]->write_to($outnames[$k])
+		if defined($ghdr->{mat}[$ln]);
 	    $k+=1;
 	} 
     }
-    my($last_out_img) = $k-1;
-    if ($last_out_img == 0) {
+    
+
+    if ($n_out_imgs == 1) {
 	# only one layer, not complex: simplest case
 	# copy 2dseq as analyze image file
 	copy($rawfile, $outfile . '.img');
@@ -400,11 +412,12 @@ sub write_analyze_image {
 		    syswrite($outhandles[$k+$ln],$data,$ghdr->{layersize});
 		}
 	    }
+	    # move to next of (real, complex)
 	    $k+=$ghdr{layer_nr};
 	}
 	close(IMG);
     }
-    foreach $o (0..$last_out_img) {
+    foreach $o (0..$n_out_imgs-1) {
 	close($outhandles[$o]);
 	if (!$options{quiet}) {
 	    print "Written analyze image $outnames[$o].img\n";
