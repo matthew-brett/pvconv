@@ -6,7 +6,7 @@
 #
 # Matthew Brett - matthewb@berkeley.edu
 #
-# $Id: pvshow.pl,v 1.4 2004/11/10 19:08:40 matthewbrett Exp $
+# $Id: pvshow.pl,v 1.5 2004/11/10 19:39:58 matthewbrett Exp $
 
 use File::Basename;
 use FileHandle;
@@ -104,13 +104,10 @@ STUDYLOOP: foreach $pv_dir(@$dirlist) {
     
   SERIESLOOP: foreach $seriesno (@seriesnos) {
 # check for reconstructed data
-      if (-e "$pv_dir/$seriesno/pdata/$options{recono}/2dseq") {
-	  $recodata = "Yes";
-      } else {
-	  $recodata = "No";
-      }
+      $rawfile = "$pv_dir/$seriesno/pdata/$options{recono}/2dseq";
+      $recodata = (-e $rawfile) ? "Yes" : "No";
 
-# read in files, with errors as appropriate
+# read in text files, with errors as appropriate
       ($hdrdata, $warning) = bruker_text_headers($pv_dir, $seriesno,
 						 $options{recono});
       unless (!($warning) || $options{quiet}) {
@@ -125,31 +122,25 @@ STUDYLOOP: foreach $pv_dir(@$dirlist) {
 # parse Bruker parameters into a generic header
 	  %ghdr = bruker2generic(\%bhdr, \%options);
 	  
-	  # report
-	  print(sprintf("%s:%d: %s; time: %s; reps: %d; reco: %s\n", 
-			$pv_dir,
-			$seriesno,
-			$bhdr{ACQ_protocol_name}, 
-			$bhdr{ACQ_time},
-			$ghdr{dim}[3],
-			$recodata,
-			)
-		);
-      } else {
+      } else { 
+	  undef %bhdr;
+	  undef %ghdr;
+      }
+ 
       # report
-      print(sprintf("%s:%d: %s; time: %s; reps: %s; reco: %s\n", 
+      print(sprintf("%s:%d: %s; time: %s; reps: %d; reco: %s\n", 
 		    $pv_dir,
 		    $seriesno,
-		    'N/K', 
-		    'N/K',
-		    'N/K',
+		    best_of($bhdr{ACQ_protocol_name},'N/K'),  
+		    best_of($bhdr{ACQ_time},'N/K'),
+		    best_of($ghdr{dim}[3],0),
 		    $recodata,
 		    )
 	    );
-      }
-
+      
   }
 }
+
 exit 0;
 
 ########################################################################

@@ -1,6 +1,6 @@
 # Bruker::Utils package; parsing for Bruker data format
 #
-# $Id: Utils.pm,v 1.3 2004/11/10 19:05:25 matthewbrett Exp $
+# $Id: Utils.pm,v 1.4 2004/11/10 19:39:58 matthewbrett Exp $
 
 package Bruker::Utils;
 
@@ -11,7 +11,8 @@ require Exporter;
 @ISA = qw( Exporter );
 @EXPORT = qw( );
 @EXPORT_OK = qw(bruker_series bruker_find_dir parse_bruker_params 
-		bruker2generic bruker_transposition bruker_text_headers best_of);
+		bruker2generic bruker_transposition 
+		bruker_text_headers best_of);
 
 use strict;
 use vars qw($VERSION );
