@@ -5,7 +5,7 @@ bin/pvshow.pl			Shows parameters from Bruker data
 CHANGES
 config/.pvconv.pl		Example configuration file for pvconv.pl
 config/.pvshow.pl		Example configuration file for pvshow.pl
-eg/sample.001/10/acqp
+eg/sample.001/10/acqp		Example input Bruker data files
 eg/sample.001/10/method
 eg/sample.001/10/pdata/1/2dseq
 eg/sample.001/10/pdata/1/d3proc
@@ -30,6 +30,18 @@ eg/sample.001/2/method
 eg/sample.001/2/pdata/1/2dseq
 eg/sample.001/2/pdata/1/d3proc
 eg/sample.001/2/pdata/1/reco
+eg/ok_sample/sample_02.hdr	Correct output for example data files
+eg/ok_sample/sample_02.mat
+eg/ok_sample/sample_10.hdr
+eg/ok_sample/sample_10.mat
+eg/ok_sample/sample_13.hdr
+eg/ok_sample/sample_13.mat
+eg/ok_sample/sample_16_acq0.hdr
+eg/ok_sample/sample_16_acq0.mat
+eg/ok_sample/sample_16_acq1.hdr
+eg/ok_sample/sample_16_acq1.mat
+eg/ok_sample/sample_17.hdr
+eg/ok_sample/sample_17.mat
 lib/Bruker/Utils.pm		Utilities for parsing Bruker data
 lib/Data/Struct/Analyze.pm	Analyze header format implemented with Data/Struct/Base
 lib/Data/Struct/Base.pm		Generic fixed field data module 
