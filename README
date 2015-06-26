@@ -57,6 +57,18 @@ as part of the "make install" process.  You should also be able to use
 the 'perldoc' utility to extract and read documentation from the files
 directly.
 
+LINKS
+
+The example Bruker data text files report themselves as being in JCAMP-DX
+format. For information on this format, see:
+
+    http://jcamp-dx.org/
+
+In particular, the example files say they are in JCAMP-DX 4.24 format.  The
+reference for this format appears to be:
+
+    http://jcamp-dx.org/protocols/dxir01.pdf
+
 SUPPORT
 
 Please send questions and bug reports to matthewb@berkeley.edu
