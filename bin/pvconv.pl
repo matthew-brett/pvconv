@@ -480,6 +480,10 @@ sub write_minc_image{
 	$zlength = $tmp;
     }
 
+    if ($tlength == 1){
+    $tlength = '';
+    }
+
 # calculate step sizes and start positions.
     $xstep .= $ghdr->{transpose}[0]{vox}[0];
     $ystep .= $ghdr->{transpose}[0]{vox}[1];
