@@ -1,4 +1,7 @@
 #!/usr/bin/perl -w
+
+eval 'exec /usr/bin/perl -w -S $0 ${1+"$@"}'
+    if 0; # not running under some shell
 #
 # pvconv.pl
 #
@@ -480,9 +483,13 @@ sub write_minc_image{
 	$zlength = $tmp;
     }
 
-    if ($tlength == 1){
+   if ($tlength == 1){
     $tlength = '';
-    }
+   } else {
+   my $timestep =  $ghdr->{transpose}[0]{vox}[3]/1000;
+   $tlength = "-sattribute time:units=seconds -dattribute time:step=$timestep -dattribute time:start=0 " . $tlength;
+   }
+
 
 # calculate step sizes and start positions.
     $xstep .= $ghdr->{transpose}[0]{vox}[0];
