@@ -1,0 +1,7 @@
+language: perl
+
+install:
+    - perl Makefile.PL
+
+script:
+    - make test
