@@ -4,7 +4,10 @@ sudo: false
 
 matrix:
   include:
-      - env: WITH_MINC=1
+      - perl: 5.20
+      - perl: 5.14
+      - perl: 5.14
+        env: WITH_MINC=1
         sudo: true
 
 
