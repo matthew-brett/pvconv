@@ -1,1 +1,15 @@
 language: perl
+
+sudo: false
+
+matrix:
+  include:
+      - perl: 5.20
+      - perl: 5.14
+      - perl: 5.14
+        env: WITH_MINC=1
+        sudo: true
+
+
+before_install:
+    - if [ -n "$WITH_MINC" ]; then sudo apt-get install minc-tools; fi
