@@ -95,7 +95,7 @@ my(%opt_defs) = (
 		 'view',    0,
 		 'recono',  1,
 		 'dimorder','zyx',
-		 'step_dir','+++',
+		 'stepdir','+++',
 		 'outtype', 'analyze',
 		 'all',     1,
 		 'layers',  1,
@@ -441,7 +441,7 @@ sub write_minc_image{
     my $stddimord    = 'zyx';
     my $stddimordtxt = 'zspace,yspace,xspace';
 
-    my ($xstep, $ystep, $zstep) = split(//, $options{step_dir}, 3);
+    my ($xstep, $ystep, $zstep) = split(//, $options{stepdir}, 3);
     $outfile .= '.mnc';
 
     if (defined($ghdr->{blockmin}) && defined($ghdr->{blockmin})) {
